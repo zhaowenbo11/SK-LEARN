@@ -44,3 +44,12 @@ plt.legend()
 temperature_new = np.array([40,5,-3])
 flower_new = W[1,0]*temperature_new+W[0,0]
 print(flower_new)
+
+# 方法二：调用sklearn
+from sklearn.linear_model import LinearRegression
+lrg = LinearRegression() # 模型实例化
+# lrg.fit(np.mat(temperature).T,np.mat(flower).T) # 模型训练
+lrg.fit(np.mat(temperature).reshape(-1,1),np.mat(flower).reshape(-1,1))
+lrg.coef_
+lrg.intercept_
+lrg.predict(np.mat(temperature_new).T)
